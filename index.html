@@ -1,0 +1,308 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Preguntas</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .question, .welcome-screen {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .options button, .start-button {
+            background-color: #FF9F00;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 8px;
+            width: 60%;
+        }
+
+        .options button:hover, .start-button:hover {
+            background-color: #FF7A00;
+        }
+
+        .success {
+            color: #28A745;
+            font-size: 1.2em;
+            margin-top: 20px;
+            background-color: #d4edda;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .warning {
+            color: #DC3545;
+            font-size: 1.2em;
+            margin-top: 20px;
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .game-footer {
+            margin-top: 50px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.1em;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .button-container button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 1.2em;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+
+        img {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cuidando Cada Paso</h1>
+            <p>Aprende a cuidar tus pies para prevenir complicaciones de la diabetes.</p>
+        </div>
+
+        <!-- Pantalla de bienvenida -->
+        <div id="welcome-screen" class="welcome-screen">
+            <h2>¡Bienvenido al juego!</h2>
+            <p>¡Estás a punto de comenzar un viaje para mejorar el cuidado de tus pies! A medida que avanzas, descubrirás consejos esenciales para prevenir complicaciones. ¡Vamos a empezar!</p>
+<img src="imagenes/Imagen1.jpg" alt="Bienvenida al juego" style="max-width: 40%; border-radius: 5px; margin-top: 10px;">
+            <button class="start-button" onclick="startGame()">Comenzar</button>
+        </div>
+
+        <!-- El contenido del juego (vacío al principio) -->
+        <div id="game-content"></div>
+
+        <div class="game-footer">
+            <p>¡Cuida tus pies, protege tu salud!</p>
+            <p>Desarrollado por Luciana Hidalgo</p>
+        </div>
+    </div>
+
+    <script>
+        const steps = [
+            {
+                question: '¿Cómo debes secar tus pies después del lavado?',
+                image: 'Imagenes/Imagen3.jpg',
+                options: [
+                    { text: 'Secar completamente, excepto entre los dedos', correct: true },
+                    { text: 'Secar incluyendo entre los dedos con fuerza', correct: false }
+                ],
+                correctFeedback: 'Correcto: Secar completamente pero sin frotar entre los dedos evita lesiones.',
+                incorrectFeedback: 'Incorrecto: Secar entre los dedos puede causar irritaciones y aumentar el riesgo de lesiones.',
+                incorrectImage: 'Imagenes/Imagen4.jpg'
+            },
+             {
+                question: '¿Qué tipo de calzado debes usar?',
+                image: 'Imagenes/Imagen5.jpg',
+                options: [
+                    { text: 'Calzado cerrado y cómodo', correct: true },
+                    { text: 'Sandalias abiertas', correct: false }
+                ],
+                correctFeedback: 'Correcto: El calzado cerrado protege los pies de lesiones y golpes.',
+                incorrectFeedback: 'Incorrecto: Las sandalias abiertas exponen los pies a lesiones.',
+                incorrectImage: 'Imagenes/Imagen6.jpg'
+            },
+            {
+                question: '¿Debes aplicar crema hidratante entre los dedos?',
+                image: 'Imagenes/Imagen7.jpg',
+                options: [
+                    { text: 'No, solo en el resto del pie', correct: true },
+                    { text: 'Sí, entre los dedos y el resto del pie', correct: false }
+                ],
+                correctFeedback: 'Correcto: No aplicar crema entre los dedos evita la humedad excesiva que puede causar hongos.',
+                incorrectFeedback: 'Incorrecto: Aplicar crema entre los dedos puede favorecer hongos por humedad.',
+                incorrectImage: 'Imagenes/Imagen8.jpg'
+            }, 
+{   question: '¿Cómo debes revisar tus pies diariamente?',
+                image: 'Imagenes/Imagen9.jpg',
+                options: [
+                    { text: 'Mirando cuidadosamente cada parte del pie', correct: true },
+                    { text: 'Revisando solo la parte superior del pie', correct: false }
+                ],
+                correctFeedback: 'Correcto: Revisar todos los lados del pie te ayudará a detectar lesiones temprano.',
+                incorrectFeedback: 'Incorrecto: No revisar todas las partes de los pies puede hacer que no notes heridas. Realiza una revisión completa.',
+                incorrectImage: 'Imagenes/Imagen10.jpg'
+            },
+            {
+                question: '¿Cómo deben estar tus pies al caminar?',
+                image: 'Imagenes/Imagen11.jpg',
+                options: [
+                    { text: 'Firmes y sin presión en los dedos', correct: true },
+                    { text: 'Con presión excesiva en los dedos o talones', correct: false }
+                ],
+                correctFeedback: 'Correcto: Caminar de forma natural sin presión excesiva previene lesiones.',
+                incorrectFeedback: 'Incorrecto: La presión excesiva en los pies puede causar úlceras o lesiones graves. Asegúrate de caminar correctamente.',
+                incorrectImage: 'Imagenes/Imagen12.jpg'
+            },
+            {
+                question: '¿Cómo debes cortar tus uñas?',
+                image: 'Imagenes/Imagen13.jpg',
+                options: [
+                    { text: 'Cortar rectas y no muy cortas', correct: true },
+                    { text: 'Cortar en forma redonda y muy cortas', correct: false }
+                ],
+                correctFeedback: 'Correcto: Cortar las uñas rectas previene que se encarnen.',
+                incorrectFeedback: 'Incorrecto: Cortar las uñas de forma incorrecta puede causar lesiones o infecciones. Hazlo con cuidado.',
+                incorrectImage: 'Imagenes/Imagen14.jpg'
+            },
+            {
+    question: '¿Cuándo debes consultar a un médico por problemas en los pies?',
+    image: 'Imagenes/Imagen15.jpg',
+    options: [
+        { text: 'Cuando notes algún cambio en la piel o uñas', correct: true },
+        { text: 'Solo cuando haya una herida grave', correct: false }
+    ],
+    correctFeedback: 'Correcto: Es importante consultar a un médico si notas cualquier cambio en la piel o uñas encarnadas.',
+    incorrectFeedback: 'Incorrecto: Esperar hasta tener una herida grave puede hacer que el problema sea más complicado de tratar.',
+    incorrectImage: 'Imagenes/Imagen16.jpg'
+},
+            {
+                question: '¿Qué calcetines deberías usar?',
+                image: 'Imagenes/Imagen17.jpg',
+                options: [
+                    { text: 'Calcetines blancos de algodón', correct: true },
+                    { text: 'Calcetines de colores sintéticos', correct: false }
+                ],
+                correctFeedback: 'Correcto: Los calcetines blancos permiten identificar heridas y absorben mejor la humedad.',
+                incorrectFeedback: 'Incorrecto: Los calcetines sintéticos y de colores pueden retener humedad y ocultar lesiones. No usar calcetines adecuados puede provocar problemas de circulación y piel.',
+                incorrectImage: 'Imagenes/Imagen18.jpg'
+            },
+
+        ];
+ 
+let currentStep = 0;
+        let incorrectAnswers = 0;
+        const gameContent = document.getElementById("game-content");
+
+        function displayQuestion(step) {
+            const questionData = steps[step];
+
+            // Desordenar las opciones
+            const shuffledOptions = questionData.options
+                .map(option => ({ ...option, sort: Math.random() }))
+                .sort((a, b) => a.sort - b.sort)
+                .map(({ sort, ...option }) => option);
+
+            gameContent.innerHTML = `
+                <div class="question">
+                    <p>${questionData.question}</p>
+                    <img src="${questionData.image}" alt="Pregunta">
+                    <div class="options">
+                        ${shuffledOptions.map((option, index) => `
+                            <button onclick="checkAnswer(${index}, ${step})">${option.text}</button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            questionData.shuffledOptions = shuffledOptions;
+        }
+
+        function checkAnswer(optionIndex, step) {
+            const currentQuestion = steps[step];
+            const isCorrect = currentQuestion.shuffledOptions[optionIndex].correct;
+            const feedback = isCorrect ? currentQuestion.correctFeedback : currentQuestion.incorrectFeedback;
+            const feedbackClass = isCorrect ? 'success' : 'warning';
+            const feedbackImage = isCorrect ? '' : `<img src="${currentQuestion.incorrectImage}" alt="Error">`;
+
+            if (!isCorrect) {
+                incorrectAnswers++;
+            }
+
+            gameContent.innerHTML = `
+                <div class="${feedbackClass}">
+                    <p>${feedback}</p>
+                    ${feedbackImage}
+                </div>
+                <div class="button-container">
+                    <button onclick="nextQuestion()">Siguiente</button>
+                </div>
+            `;
+        }
+
+        function nextQuestion() {
+            currentStep++;
+            if (currentStep < steps.length) {
+                displayQuestion(currentStep);
+            } else {
+                gameContent.innerHTML = incorrectAnswers > 0
+                    ? `<div class="warning"><p>Has cometido varias respuestas incorrectas. Es importante que revises los cuidados recomendados para tus pies y consultes con tu médico para obtener procedimientos específicos que te ayuden a cuidar tu salud.</p></div>`
+                    : `<div class="success"><p>¡Felicidades! Completaste el juego.</p></div>`;
+            }
+        }
+
+        function startGame() {
+            document.getElementById("welcome-screen").style.display = 'none';
+            displayQuestion(currentStep);
+        }
+    </script>
+</body>
+</html>
