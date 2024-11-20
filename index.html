@@ -133,7 +133,7 @@
         <div id="welcome-screen" class="welcome-screen">
             <h2>¡Bienvenido al juego!</h2>
             <p>¡Estás a punto de comenzar un viaje para mejorar el cuidado de tus pies! A medida que avanzas, descubrirás consejos esenciales para prevenir complicaciones. ¡Vamos a empezar!</p>
-<img src="imagenes/Imagen1.jpg" alt="Bienvenida al juego" style="max-width: 40%; border-radius: 5px; margin-top: 10px;">
+<img src="Imagen1.jpg" alt="Bienvenida al juego" style="max-width: 40%; border-radius: 5px; margin-top: 10px;">
             <button class="start-button" onclick="startGame()">Comenzar</button>
         </div>
 
@@ -150,90 +150,90 @@
         const steps = [
             {
                 question: '¿Cómo debes secar tus pies después del lavado?',
-                image: 'Imagenes/Imagen3.jpg',
+                image: 'Imagen3.jpg',
                 options: [
                     { text: 'Secar completamente, excepto entre los dedos', correct: true },
                     { text: 'Secar incluyendo entre los dedos con fuerza', correct: false }
                 ],
                 correctFeedback: 'Correcto: Secar completamente pero sin frotar entre los dedos evita lesiones.',
                 incorrectFeedback: 'Incorrecto: Secar entre los dedos puede causar irritaciones y aumentar el riesgo de lesiones.',
-                incorrectImage: 'Imagenes/Imagen4.jpg'
+                incorrectImage: 'Imagen4.jpg'
             },
              {
                 question: '¿Qué tipo de calzado debes usar?',
-                image: 'Imagenes/Imagen5.jpg',
+                image: 'Imagen5.jpg',
                 options: [
                     { text: 'Calzado cerrado y cómodo', correct: true },
                     { text: 'Sandalias abiertas', correct: false }
                 ],
                 correctFeedback: 'Correcto: El calzado cerrado protege los pies de lesiones y golpes.',
                 incorrectFeedback: 'Incorrecto: Las sandalias abiertas exponen los pies a lesiones.',
-                incorrectImage: 'Imagenes/Imagen6.jpg'
+                incorrectImage: 'Imagen6.jpg'
             },
             {
                 question: '¿Debes aplicar crema hidratante entre los dedos?',
-                image: 'Imagenes/Imagen7.jpg',
+                image: 'Imagen7.jpg',
                 options: [
                     { text: 'No, solo en el resto del pie', correct: true },
                     { text: 'Sí, entre los dedos y el resto del pie', correct: false }
                 ],
                 correctFeedback: 'Correcto: No aplicar crema entre los dedos evita la humedad excesiva que puede causar hongos.',
                 incorrectFeedback: 'Incorrecto: Aplicar crema entre los dedos puede favorecer hongos por humedad.',
-                incorrectImage: 'Imagenes/Imagen8.jpg'
+                incorrectImage: 'Imagen8.jpg'
             }, 
 {   question: '¿Cómo debes revisar tus pies diariamente?',
-                image: 'Imagenes/Imagen9.jpg',
+                image: 'Imagen9.jpg',
                 options: [
                     { text: 'Mirando cuidadosamente cada parte del pie', correct: true },
                     { text: 'Revisando solo la parte superior del pie', correct: false }
                 ],
                 correctFeedback: 'Correcto: Revisar todos los lados del pie te ayudará a detectar lesiones temprano.',
                 incorrectFeedback: 'Incorrecto: No revisar todas las partes de los pies puede hacer que no notes heridas. Realiza una revisión completa.',
-                incorrectImage: 'Imagenes/Imagen10.jpg'
+                incorrectImage: 'Imagen10.jpg'
             },
             {
                 question: '¿Cómo deben estar tus pies al caminar?',
-                image: 'Imagenes/Imagen11.jpg',
+                image: 'Imagen11.jpg',
                 options: [
                     { text: 'Firmes y sin presión en los dedos', correct: true },
                     { text: 'Con presión excesiva en los dedos o talones', correct: false }
                 ],
                 correctFeedback: 'Correcto: Caminar de forma natural sin presión excesiva previene lesiones.',
                 incorrectFeedback: 'Incorrecto: La presión excesiva en los pies puede causar úlceras o lesiones graves. Asegúrate de caminar correctamente.',
-                incorrectImage: 'Imagenes/Imagen12.jpg'
+                incorrectImage: 'Imagen12.jpg'
             },
             {
                 question: '¿Cómo debes cortar tus uñas?',
-                image: 'Imagenes/Imagen13.jpg',
+                image: 'Imagen13.jpg',
                 options: [
                     { text: 'Cortar rectas y no muy cortas', correct: true },
                     { text: 'Cortar en forma redonda y muy cortas', correct: false }
                 ],
                 correctFeedback: 'Correcto: Cortar las uñas rectas previene que se encarnen.',
                 incorrectFeedback: 'Incorrecto: Cortar las uñas de forma incorrecta puede causar lesiones o infecciones. Hazlo con cuidado.',
-                incorrectImage: 'Imagenes/Imagen14.jpg'
+                incorrectImage: 'Imagen14.jpg'
             },
             {
     question: '¿Cuándo debes consultar a un médico por problemas en los pies?',
-    image: 'Imagenes/Imagen15.jpg',
+    image: 'Imagen15.jpg',
     options: [
         { text: 'Cuando notes algún cambio en la piel o uñas', correct: true },
         { text: 'Solo cuando haya una herida grave', correct: false }
     ],
     correctFeedback: 'Correcto: Es importante consultar a un médico si notas cualquier cambio en la piel o uñas encarnadas.',
     incorrectFeedback: 'Incorrecto: Esperar hasta tener una herida grave puede hacer que el problema sea más complicado de tratar.',
-    incorrectImage: 'Imagenes/Imagen16.jpg'
+    incorrectImage: 'Imagen16.jpg'
 },
             {
                 question: '¿Qué calcetines deberías usar?',
-                image: 'Imagenes/Imagen17.jpg',
+                image: 'Imagen17.jpg',
                 options: [
                     { text: 'Calcetines blancos de algodón', correct: true },
                     { text: 'Calcetines de colores sintéticos', correct: false }
                 ],
                 correctFeedback: 'Correcto: Los calcetines blancos permiten identificar heridas y absorben mejor la humedad.',
                 incorrectFeedback: 'Incorrecto: Los calcetines sintéticos y de colores pueden retener humedad y ocultar lesiones. No usar calcetines adecuados puede provocar problemas de circulación y piel.',
-                incorrectImage: 'Imagenes/Imagen18.jpg'
+                incorrectImage: 'Imagen18.jpg'
             },
 
         ];
